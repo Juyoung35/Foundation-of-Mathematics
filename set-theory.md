@@ -32,6 +32,15 @@ We denote it by $`\in`$, thus we read $`X \in Y`$ as "$`X`$ is an element of $`Y
 $`\forall X \forall Y (\forall a (a \in X \iff a \in Y) \implies X = Y)`$  
 두 집합의 모든 원소가 같다면 두 집합은 같다.  
 다양한 집합들의 유일성을 보이고, 거기에 이름을 붙일 수 있음.  
+```
+forall(X,
+  forall(Y,
+    forall(a,
+      iff::(a.in(X), a.in(Y))
+    ).implies(X = Y)
+  )
+)
+```
 
 ### 존재 공리(axiom of existence) 또는 공집합 공리(axiom of empty set)
 $`\exists X \forall a (\neg (a \in X))`$
@@ -64,3 +73,11 @@ $`\exists I (\emptyset \in I \land (\forall x (x \in I \implies S(x) \in I)))`$
 공집합을 원소로 가지고, $`x`$를 원소로 가진다면 $`S(x)`$도 항상 원소로 가지는, 집합 $`I`$가 존재한다.  
 자연수 집합의 존재성을 보장. 자연수 집합 $`N`$은 이러한 성질을 만족하는 집합(귀납적 집합; inductive set)들 중 가장 크기가 작은 집합으로 정의된다.  
 수학적 귀납법의 타당성도 이러한 자연수 집합의 정의로부터 바로 유도된다.  
+$`\exists I, \forall X (X \in I \land \forall x, \neg x \in X) \land \forall Y, Y \in I \implies \exists Z, Z \in I \land \forall y, y \in Z \iff (y \in Y \lor \forall z (z \in y \iff z = Y))`$  
+
+### 기초 공리(axiom of foundation) 또는 정칙성 공리(axiom of regularity)
+$`\forall X (\exists a (a \in X) \implies (\exists b (b \in X \land \neg \exists c (c \in b \land c \in X))))`$  
+공집합이 아닌 모든 집합은 자신과 서로소인 원소를 가진다.  
+모든 집합은 공집합의 멱집합, 그것의 멱집합, 그것의 멱집합...과 같은 식으로 만들어진 집합(이러한 집합들을 모두 모아놓은 것을 폰 노이만 전체라고 한다)들 중 하나에 속한다.  
+어떤 집합을 가져다 놔도 그것의 원소, 의 원소, 의 원소... 이런 방식으로 계속 내려가면 공집합이 나온다는 것.  
+자연수, 실수, 함수 등등의 모든 오브젝트들이 다 이러한 꼴이다.  
